@@ -22,6 +22,12 @@ class Result:
 app = Flask(__name__)
 @app.route('/')
 def hello():
+    sequence  = []
+    hashTable = HashTable()
+    binary = BinarySearchTree()
+    getData()
+    sequence = sorted(sequence, key=operator.attrgetter('word'))
+    cleanWord()
    return render_template('index.html')
 @app.route('/result',methods=['POST'])
 def showResult():
