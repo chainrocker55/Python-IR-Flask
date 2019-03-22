@@ -9,8 +9,7 @@ from urllib.request import urlopen
 from time import time as sec
 from time import asctime as asc
 from time import localtime as loc
-import sys
-import logging
+
 
 # เอาไว้ render ข้อมูล
 class Result:
@@ -21,9 +20,6 @@ class Result:
 
 # router สำหรับรับ path
 app = Flask(__name__)
-
-app.logger.addHandler(logging.StreamHandler(sys.stdout))
-app.logger.setLevel(logging.ERROR)
 @app.route('/')
 def hello():
     return render_template('index.html')
@@ -407,11 +403,13 @@ def search(word):
     if(i.word == word):
       return i
 # main
+sequence  = []
+hashTable = HashTable()
+binary = BinarySearchTree()
+getData()
+sequence = sorted(sequence, key=operator.attrgetter('word'))
+cleanWord()
+app.run(debug=True)
+
 if __name__ == '__main__':
-    sequence  = []
-    hashTable = HashTable()
-    binary = BinarySearchTree()
-    getData()
-    sequence = sorted(sequence, key=operator.attrgetter('word'))
-    cleanWord()
-    app.run(debug=True)
+
