@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+     <section class="hero is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="column is-4 is-offset-4 box boxMove">
+          <h3 class="title has-text-grey">ระบบจัดการคำ</h3>
+          <br>
+          <div class="box">
+            <form id="myForm" action="{{url_for('showResult')}}" method="post">
+              <div class="field">
+                <div class="control">
+                  <input id="word" name="word" class="input is-large" type="text" placeholder="ป้อนข้อมูล" required></input>
+                </div>
+              </div>
+                <div class="field">
+                    <div class="control">
+                     <h3 class="subtitle is-5 is-pulled-left">Select Algorithm : </h3> &nbsp;
+                  <div class="select">
+                  <select name="algo" id="algo">
+                      <option value="1">Sequence</option>
+                      <option value="2">BinarySearchTree</option>
+                      <option value="3">Hash Table</option>
+                      <option value="4">BinarySearch</option>
+                      <option value="5">Intersection</option>
+                  </select>
+                  </div>
+                    </div>
+                </div>
+              <div class="field">
+                <button onclick="addClass()" type="button" class="button is-success is-fullwidth is-large">
+                    <span>Search</span>
+                    <span class="icon is-medium">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </button>
+              </div>
+              <div id="dolphin"></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+</body>
+</html>

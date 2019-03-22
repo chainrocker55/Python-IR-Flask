@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Position</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+</head>
+
+<body>
+     <section class="section">
+              <div class="container">
+                   <div class="notification eiei">
+                        <h1 class="title">Position of word: {{word}}</h1>
+                    </div>
+                  <table class="table is-bordered is-striped  is-hoverable is-fullwidth">
+                      <thead>
+                        <tr>
+                          <th>Inverted index</th>
+                          <th>Position index</th>
+                        </tr>
+                      </thead>
+                      <tbody>  
+                          {% for row in range(position|length) %}
+                          <tr>
+                              <td>{{position[row][0]}}</td> 
+                              <td>
+                              {% for line in range(position[row]|length-1) %}        
+                                  {{position[row][line+1]}}
+                              {% endfor %}   
+                            </td>                                                        
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                 </table>
+
+              </div>
+
+            </div>
+
+  </section>
+</body>
+</html>

@@ -1,0 +1,63 @@
+ html{
+            background-image:url('../img/background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            background-attachment: fixed;
+        }
+  .resultTable{
+    border-radius: 10px;
+  }
+.boxMove{
+            -webkit-animation-name: boxMove;
+            -webkit-animation-duration: 2s;
+            animation-name: boxMove;
+            animation-duration: 2s;}
+@keyframes boxMove {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes boxMove {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.dolphinStyle {
+    position: absolute;
+    -webkit-animation-name: move; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+    animation-name: move;
+    animation-duration: 1s;
+    background-image:url('../img/dolphin.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes move {
+    0%   {bottom:-500px;opacity: 0;}
+    80% {bottom:200px; opacity: 1;}
+    100% {bottom:200px; opacity: 0;display: none;}
+  }
+  
+  /* Standard syntax */
+  @keyframes move {
+    0%   {bottom:-500px;opacity: 0;}
+    80% {bottom:200px; opacity: 1;}
+    100% {bottom:200px; opacity: 0; display: none;}
+  }
+div[id="dolphin"]{
+    width: 600px;
+    height: 500px;
+    position: absolute;
+    bottom: -500;
+}

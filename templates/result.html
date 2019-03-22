@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+</head>
+
+<body>
+     <section class="section">
+              <div class="container">
+
+                  <div class="notification">
+                      <br>
+                        <h1 class="title">{{title}}</h1>
+                      <h1 class="subtitle">Date start : {{dateStart}}</h1>
+                      <h1 class="subtitle">Date stop : {{dateEnd}}</h1>
+                       <h1 class="subtitle">Time use : {{time}} Nano Time</h1>
+                      <h1 class="subtitle">Size : {{size}}</h1>
+                    </div>
+                  <table class="table is-fullwidth is-hoverable resultTable">
+                      <thead>
+                        <tr>
+                          <th>Word</th>
+                          <th>Count</th>
+                          <th>Inverted index</th>
+                            <th>Position</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for row in result %}
+                      <tr>
+                          <td>{{row.word}}</td>
+                          <td>{{row.value}}</td>
+                          <td>{{row.file}}</td>
+                          {% if row.value != None %}
+                            <td> <a href="{{url_for('showPosition',word=row.word)}}" class="button is-link is-focused">Position</a>
+                          {% endif %}
+                          </td>
+                      </tr>
+                      {% endfor %}
+
+                      {% if intersect|length > 0 %}
+                          <div class="notification">
+                          <h1 class="title">The intersect is:</h1>
+                          <h1 class="subtitle">{{intersect}}</h1>
+                    </div>
+                      {% endif %}
+                      </tbody>
+                 </table>
+
+              </div>
+
+            </div>
+
+  </section>
+</body>
+</html>
