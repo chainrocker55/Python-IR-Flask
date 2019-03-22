@@ -28,7 +28,7 @@ def hello():
     getData()
     sequence = sorted(sequence, key=operator.attrgetter('word'))
     cleanWord()
-   return render_template('index.html')
+    return render_template('index.html')
 @app.route('/result',methods=['POST'])
 def showResult():
     word=[]
