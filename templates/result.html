@@ -27,7 +27,9 @@
                           <th>Word</th>
                           <th>Count</th>
                           <th>Inverted index</th>
+                          {% if not option6 %}
                             <th>Position</th>
+                          {% endif %}
                         </tr>
                       </thead>
                       <tbody>
@@ -36,8 +38,10 @@
                           <td>{{row.word}}</td>
                           <td>{{row.value}}</td>
                           <td>{{row.file}}</td>
-                          {% if row.value != None %}
-                            <td> <a href="{{url_for('showPosition',word=row.word)}}" class="button is-link is-focused">Position</a>
+                          {% if not option6 %}
+                            {% if row.value != None %}
+                              <td> <a href="{{url_for('showPosition',word=row.word)}}" class="button is-link is-focused">Position</a>
+                            {% endif %}
                           {% endif %}
                           </td>
                       </tr>

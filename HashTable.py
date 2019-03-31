@@ -15,7 +15,7 @@ class Node:
 class HashTable:
 
     def __init__(self):
-      self.capacity = 1000
+      self.capacity = 2663 
       self.size = 0
       self.buckets = [None]*self.capacity
 
