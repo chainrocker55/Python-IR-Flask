@@ -12,6 +12,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
+stopwords.words('english')
 
 from time import time as sec
 from time import asctime as asc
