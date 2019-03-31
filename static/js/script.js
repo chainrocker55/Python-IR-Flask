@@ -2,23 +2,13 @@ function addClass() {
     var element = document.getElementById("dolphin");
     element.classList.add("dolphinStyle");
     setTimeout(function(){
+      element.classList.remove("dolphinStyle");
       submitForm(); 
       }, 800);
+      
  }
  function submitForm() {
   document.getElementById("myForm").submit();
 }
- function myMove() {
-    var elem = document.getElementById("dolphin");  
-    elem.style.backgroundImage = url('../img/dolphin.png');
-    var pos = 0;
-    var id = setInterval(frame, 5);
-    function frame() {
-      if (pos == 200) {
-        clearInterval(id);
-      } else {
-        pos+=4; 
-        elem.style.bottom = pos + "px"; 
-      }
-    }
-  }
+
+  document.write("<div><h1 class=\"title\" style=\"font-family: cursive;color: black;font-size: 20px;font-weight: bolder; position:fixed;right:10px;bottom:10px;\">Chainrocker</h1></div>");

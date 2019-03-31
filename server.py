@@ -3,12 +3,15 @@ import operator
 import threading
 import pandas as pd
 import re
-from urllib.request import urlopen
+
+import requests
+from lxml import html
+from bs4 import BeautifulSoup
+from nltk.tokenize import sent_tokenize, word_tokenize
 
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
-stopwords.words('english')
 
 from time import time as sec
 from time import asctime as asc
@@ -149,10 +152,10 @@ def showPosition(word):
     return render_template('position.html',word=word,position=temp.position)
 
 # โหลดข้อมูล จาก ไฟล์ csv
-df = pd.read_csv('Web.csv')
+df = pd.read_csv('URL.csv')
 url=[]
 for line in range(len(df)):
-  url.append(df['Column'][line])
+  url.append(df['url'][line])
 # class สำหรับเก็บข้อมูล
 class Node:
 	def __init__(self, key, value, file,position):
@@ -348,9 +351,11 @@ class MyThread(threading.Thread):
 
   def run(self):
     for i in range(int(self.lo),int(self.hi)):
-      data = urlopen(str(url[i]))
-      mybytes = data.read().decode('windows-1252')
-      arrayWord = stopWord(mybytes)
+      web =  url[i]                                                              
+      resp = requests.get(web)             
+      soup = BeautifulSoup(resp.content, 'html.parser')
+      content = soup.find("body").get_text()
+      arrayWord = stopWord(content)
       for j in range(len(arrayWord)):
         self.binary.put(arrayWord[j],1,i+1)
         self.sequence.append(Data(i+1,arrayWord[j],j+1))
